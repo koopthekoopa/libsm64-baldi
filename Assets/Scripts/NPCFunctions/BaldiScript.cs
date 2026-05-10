@@ -145,13 +145,13 @@ public class BaldiScript : MonoBehaviour
 	public bool db;
 	public float baseTime;
 	public float speed;
+	public float startMoveFrames = 4;
 	public float timeToMove;
 	public float baldiAnger;
 	public float baldiTempAnger;
 	public float baldiWait;
 	public float baldiSpeedScale;
 	private float moveFrames;
-	private float startMoveFrames = 4;
 	private float currentPriority;
 	public bool antiHearing;
 	public float antiHearingTime;
