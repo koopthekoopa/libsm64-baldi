@@ -46,6 +46,11 @@ public class PlayerScript : SM64InputProvider
 			DeactivateJumpRope();
             playtime.Disappoint();
 		}
+        if (jumpRope && (Input.GetKey(KeyCode.K) && gc.debugMode))
+		{
+			DeactivateJumpRope();
+            playtime.Disappoint();
+		}
         if (hugging && SM64HasMetalCap())
 		{
             firstPrizeScript.GoCrazy();

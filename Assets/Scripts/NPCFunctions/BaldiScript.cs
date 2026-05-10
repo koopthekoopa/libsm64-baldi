@@ -94,7 +94,6 @@ public class BaldiScript : MonoBehaviour
 		coolDown = 1f;
 		currentPriority = 0f;
 	}
-    bool more = false;
 	private void Move()
 	{
 		if (transform.position == previous & coolDown < 0f) // If Baldi reached his destination, start wandering
@@ -102,8 +101,7 @@ public class BaldiScript : MonoBehaviour
 			Wander();
 		}
 		//moveFrames = 10f;
-		moveFrames = more ? 6 : 5;
-        more = !more;
+		moveFrames = startMoveFrames;
 		timeToMove = baldiWait - baldiTempAnger;
 		previous = transform.position; // Set previous to Baldi's current location
 		baldiAudio.PlayOneShot(slap); //Play the slap sound
@@ -153,6 +151,7 @@ public class BaldiScript : MonoBehaviour
 	public float baldiWait;
 	public float baldiSpeedScale;
 	private float moveFrames;
+	private float startMoveFrames = 4;
 	private float currentPriority;
 	public bool antiHearing;
 	public float antiHearingTime;
