@@ -1,6 +1,6 @@
 # libsm64 in Baldi's Basics
 
-was bored and took like a few days.
+was bored and took like almost two weeks.
 
 required unity version minimum: 2022.3.62f2
 
