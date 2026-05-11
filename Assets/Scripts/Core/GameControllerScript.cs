@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using LibSM64;
 
 public class GameControllerScript : MonoBehaviour
 {
@@ -34,6 +35,12 @@ public class GameControllerScript : MonoBehaviour
             Debug.Log("welp, you found out. idk how but uhh debug mode on ig");
             debugMode = !debugMode;
         }
+
+        /*if (Input.GetKeyDown(KeyCode.U) && debugMode)
+        {
+            Debug.Log("knock!");
+            player.marioObj.SetAction(SM64ActionType.ACT_FORWARD_GROUND_KB);
+        }*/
 
         if (debugMode && Input.GetKeyDown(KeyCode.M) && notebooks < 6)
         {

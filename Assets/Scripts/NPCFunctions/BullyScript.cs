@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
+using LibSM64;
 
 public class BullyScript : MonoBehaviour
 {
 	private void Start()
 	{
 		audioDevice = GetComponent<AudioSource>(); //Get the Audio Source
-		waitTime = Random.Range(60f, 120f); //Set the amount of time before the bully appears again
+		//waitTime = Random.Range(60f, 120f); //Set the amount of time before the bully appears again
+		waitTime = Random.Range(1f, 2f); //Set the amount of time before the bully appears again
 	}
 	private void Update()
 	{
@@ -75,6 +77,7 @@ public class BullyScript : MonoBehaviour
 				int num2 = Mathf.RoundToInt(Random.Range(0f, 1f));
 				audioDevice.PlayOneShot(aud_Thanks[num2]);
 				Reset();
+                // gc.player.marioObj.SetAction(SM64ActionType.ACT_HARD_BACKWARD_AIR_KB); // actually annoying
 			}
 		}
 	}

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using LibSM64;
 
 public class PrincipalScript : MonoBehaviour
 {
@@ -144,6 +145,7 @@ public class PrincipalScript : MonoBehaviour
 			{
 				detentions = 4;
 			}
+            playerScript.marioObj.SetAction(SM64ActionType.ACT_HARD_FORWARD_GROUND_KB);
 		}
 	}
 	private void OnTriggerExit(Collider other)

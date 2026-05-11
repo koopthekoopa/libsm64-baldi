@@ -11,7 +11,7 @@ public class PickupScript : MonoBehaviour
         bool metalCapAvailable = false;
         if (gameObject.name == "Pickup_MetalCap")
         {
-            if (gc.notebooks >= 4 && gc.notebooks < 7)
+            if (gc.notebooks >= 3 && gc.notebooks < 7)
             {
                 metalCapAvailable = true;
             }

@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using LibSM64;
 
 public class JumpRopeScript : MonoBehaviour
 {
@@ -69,6 +70,7 @@ public class JumpRopeScript : MonoBehaviour
 		jumpCount.text = jumps + "/5";
 		jumpDelay = 2f; //Set the jump delay to 2 seconds to allow playtime to finish her line before the rope starts again
 		playtime.audioDevice.PlayOneShot(playtime.aud_Oops);
+        ps.marioObj.SetAction(SM64ActionType.ACT_FORWARD_GROUND_KB);
 	}
 	public TMP_Text jumpCount;
 	public Animator rope;

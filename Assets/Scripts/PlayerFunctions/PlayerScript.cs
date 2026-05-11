@@ -150,11 +150,18 @@ public class PlayerScript : SM64InputProvider
             moveDirection = gottaSweep.velocity * Time.deltaTime + moveDirection * 0.55f;
             marioObj.MovePosition(new Vector3(moveDirection.x, moveDirection.y, moveDirection.z));
             SM64ResetSpeed();
+            SM64SetAction(SM64ActionType.ACT_GRABBED);
         }
         else if (hugging && (!bootsActive || SM64HasMetalCap()))
         {
             moveDirection = (firstPrize.velocity * 1.75f * Time.deltaTime + (new Vector3(firstPrizeTransform.position.x, height, firstPrizeTransform.position.z) + new Vector3((float)Mathf.RoundToInt(firstPrizeTransform.forward.x), 0f, (float)Mathf.RoundToInt(firstPrizeTransform.forward.z)) * 3f - base.transform.position)) * (float)principalBugFixer;
             marioObj.MovePosition(new Vector3(moveDirection.x, moveDirection.y, moveDirection.z));
+            SM64SetAction(SM64ActionType.ACT_GRABBED);
+        }
+        
+        if (!hugging && !sweeping)
+        {
+            SM64SetAction(SM64ActionType.ACT_IDLE);
         }
 	}
 	private void StaminaCheck()
@@ -361,6 +368,16 @@ public class PlayerScript : SM64InputProvider
     public bool SM64IsAttacking()
     {
         return marioObj.IsAttacking();
+    }
+
+    SM64ActionType lastSet = SM64ActionType.ACT_IDLE;
+    public void SM64SetAction(SM64ActionType type, bool force = false)
+    {
+        if (lastSet != type || force)
+        {
+            lastSet = type;
+            marioObj.SetAction(lastSet);
+        }
     }
     
     [SerializeField] GameObject cameraObject;
