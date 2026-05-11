@@ -14,8 +14,6 @@ namespace LibSM64
 
         public const int SM64_MAX_HEALTH = 8;
 
-        public static bool ENABLE_AUDIO = true;
-
         private static readonly object _lock = new();
 
         private static Vector3 UnityWorldToMario(this Vector3 pos)
@@ -221,7 +219,7 @@ namespace LibSM64
             sm64_global_init( romHandle.AddrOfPinnedObject(), textureDataHandle.AddrOfPinnedObject());
             // Spams and lags because of audio
             //sm64_register_debug_print_function( Marshal.GetFunctionPointerForDelegate( callbackDelegate ));
-            if (ENABLE_AUDIO) sm64_audio_init( romHandle.AddrOfPinnedObject() );
+            sm64_audio_init( romHandle.AddrOfPinnedObject() );
 
             Color32[] cols = new Color32[ SM64_TEXTURE_WIDTH * SM64_TEXTURE_HEIGHT ];
             marioTexture = new Texture2D( SM64_TEXTURE_WIDTH, SM64_TEXTURE_HEIGHT );
@@ -299,7 +297,6 @@ namespace LibSM64
 
         public static uint AudioTick(short[] audioBuffer, uint numDesiredSamples, uint numQueuedSamples = 0)
         {
-            if (!ENABLE_AUDIO) return 0;
             lock (_lock)
             {
                 GCHandle audioBufferPointer = GCHandle.Alloc(audioBuffer, GCHandleType.Pinned);

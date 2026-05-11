@@ -49,16 +49,13 @@ namespace LibSM64
             RefreshStaticTerrain();
 
             // Setup audio source
-            if (Interop.ENABLE_AUDIO)
-            {
-                AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-                audioSource.spatialBlend = 0f;
+            AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.spatialBlend = 0f;
 
-                audioSource.pitch = 0.665f;
+            audioSource.pitch = 0.665f;
 
-                audioSource.loop = true;
-                audioSource.Play();
-            }
+            audioSource.loop = true;
+            audioSource.Play();
         }
 
         void Update()
@@ -72,7 +69,6 @@ namespace LibSM64
 
         private void OnAudioFilterRead(float[] data, int channels)
         {
-            if (!Interop.ENABLE_AUDIO) return;
             int remaining = data.Length;
             while (remaining > 0)
             {
