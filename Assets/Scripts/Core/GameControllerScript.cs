@@ -393,9 +393,12 @@ public class GameControllerScript : MonoBehaviour
 			}
 			else if (item[itemSelected] == 4 && Singleton<InputManager>.Instance.GetActionKeyDown(InputAction.UseItem))
 			{
-                Quaternion sm64rotate = this.playerTransform.gameObject.GetComponent<PlayerScript>().SM64Rotation();
+				// unless you wanna have an annoying experience
+                //Quaternion sm64rotate = this.playerTransform.gameObject.GetComponent<PlayerScript>().SM64Rotation();
+				//Instantiate<GameObject>(bsodaSpray, new Vector3(playerTransform.position.x, playerTransform.position.y + 3.5f, playerTransform.position.z), sm64rotate);
+
 				//Instantiate<GameObject>(bsodaSpray, playerTransform.position, cameraTransform.rotation);
-				Instantiate<GameObject>(bsodaSpray, new Vector3(playerTransform.position.x, playerTransform.position.y + 3.5f, playerTransform.position.z), sm64rotate);
+				Instantiate<GameObject>(bsodaSpray, new Vector3(playerTransform.position.x, playerTransform.position.y + 3.5f, playerTransform.position.z), playerTransform.rotation);
 				ResetItem();
 				player.ResetGuilt("drink", 1f);
 				audioDevice.PlayOneShot(aud_Soda);
