@@ -143,6 +143,7 @@ public class PrincipalScript : MonoBehaviour
 			{
 				detentions = 4;
 			}
+            this.playerScript.SM64Teleport(principalDetentionPoint.position); // just in case
             playerScript.marioObj.SetAction(SM64ActionType.ACT_HARD_FORWARD_GROUND_KB);
 		}
 	}

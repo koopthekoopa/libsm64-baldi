@@ -181,6 +181,8 @@ namespace LibSM64
         static extern void sm64_audio_init( IntPtr rom );
         [DllImport("sm64")]
         static extern uint sm64_audio_tick( uint numQueuedSamples, uint numDesiredSamples, IntPtr audio_buffer );
+        [DllImport("sm64")]
+        static extern void sm64_set_sound_volume( float vol );
 		
 		/* MUSIC */
         [DllImport("sm64")]
@@ -237,6 +239,7 @@ namespace LibSM64
             // Spams and lags because of audio
             //sm64_register_debug_print_function( Marshal.GetFunctionPointerForDelegate( callbackDelegate ));
             sm64_audio_init( romHandle.AddrOfPinnedObject() );
+			sm64_set_sound_volume( 0.9f );
 
             Color32[] cols = new Color32[ SM64_TEXTURE_WIDTH * SM64_TEXTURE_HEIGHT ];
             marioTexture = new Texture2D( SM64_TEXTURE_WIDTH, SM64_TEXTURE_HEIGHT );
