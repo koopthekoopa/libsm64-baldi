@@ -7,6 +7,71 @@ using LibSM64;
 
 public class GameControllerScript : MonoBehaviour
 {
+	private bool SM64MusicEnable()
+	{
+		return PlayerPrefs.HasKey("SM64Music") && PlayerPrefs.GetInt("SM64Music") == 1;
+	}
+
+	private void SchoolMusicPlay()
+	{
+		if (SM64MusicEnable())
+		{
+			SM64Context.PlayMusic(SM64SeqId.SEQ_LEVEL_INSIDE_CASTLE);
+		}
+		else
+		{
+			schoolMusic.Play();
+		}
+	}
+
+	private void SchoolMusicStop()
+	{
+		if (SM64MusicEnable())
+		{
+			//SM64Context.StopMusic();
+		}
+		else
+		{
+			schoolMusic.Stop();
+		}
+	}
+
+	private void LearnMusicPlay()
+	{
+		if (SM64MusicEnable())
+		{
+			SM64Context.PlayMusic(SM64SeqId.SEQ_MENU_FILE_SELECT);
+		}
+		else
+		{
+			learnMusic.Play();
+		}
+	}
+
+	private void LearnMusicStop()
+	{
+		if (SM64MusicEnable())
+		{
+			//SM64Context.StopMusic();
+		}
+		else
+		{
+			learnMusic.Stop();
+		}
+	}
+
+	private void BaldiMusicPlay()
+	{
+		if (SM64MusicEnable())
+		{
+			SM64Context.PlayMusic(SM64SeqId.SEQ_EVENT_BOSS);
+		}
+		else
+		{
+			// vanilla doesnt have one
+		}
+	}
+
 	private void Start()
 	{
 #if UNITY_STANDALONE
@@ -22,7 +87,7 @@ public class GameControllerScript : MonoBehaviour
 		{
 			baldiScrpt.endless = true; //Set Baldi use his slightly changed endless anger system
 		}
-		schoolMusic.Play(); //Play the school music
+		SchoolMusicPlay(); //Play the school music
 		LockMouse(); //Prevent the mouse from moving
 		UpdateNotebookCount(); //Update the notebook count
 		itemSelected = 0; //Set selection to item slot 0(the first item slot)
@@ -244,8 +309,9 @@ public class GameControllerScript : MonoBehaviour
         firstPrize.SetActive(true); //Turns on First-Prize
 		//TestEnemy.SetActive(true); //Turns on Test-Enemy (Bonus)
 		audioDevice.PlayOneShot(aud_Hang); //Plays the hang sound
-		learnMusic.Stop(); //Stop all the music
-		schoolMusic.Stop();
+		LearnMusicStop(); //Stop all the music
+		SchoolMusicStop();
+		BaldiMusicPlay(); //Play Baldi Music
 	}
 	private void ActivateFinaleMode()
 	{
@@ -271,8 +337,8 @@ public class GameControllerScript : MonoBehaviour
 		tutorBaldi.Stop(); //Make tutor Baldi stop talking
 		if (!spoopMode) //If the player hasn't gotten a question wrong
 		{
-			schoolMusic.Stop(); //Start playing the learn music
-			learnMusic.Play();
+			SchoolMusicStop(); //Start playing the learn music
+			LearnMusicPlay();
 		}
 	}
 	public void DeactivateLearningGame(GameObject subject)
@@ -287,8 +353,8 @@ public class GameControllerScript : MonoBehaviour
 		}
 		if (!spoopMode) //If it isn't spoop mode, play the school music
 		{
-			schoolMusic.Play();
-			learnMusic.Stop();
+			LearnMusicStop();
+			SchoolMusicPlay();
 		}
 		if (notebooks == 1 & !spoopMode) // If this is the players first notebook and they didn't get any questions wrong, reward them with a quarter
 		{

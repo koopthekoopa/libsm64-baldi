@@ -8,22 +8,9 @@ public class OptionsManager : MonoBehaviour
 		if (PlayerPrefs.HasKey("OptionsSet"))
 		{
 			slider.value = PlayerPrefs.GetFloat("MouseSensitivity");
-			if (PlayerPrefs.GetInt("Rumble") == 1)
-			{
-				rumble.isOn = true;
-			}
-			else
-			{
-				rumble.isOn = false;
-			}
-			if (PlayerPrefs.GetInt("AnalogMove") == 1)
-			{
-				analog.isOn = true;
-			}
-			else
-			{
-				analog.isOn = false;
-			}
+			rumble.isOn = PlayerPrefs.GetInt("Rumble") == 1;
+			analog.isOn = PlayerPrefs.GetInt("AnalogMove") == 1;
+			sm64music.isOn = PlayerPrefs.GetInt("SM64Music") == 1;
 		}
 		else
 		{

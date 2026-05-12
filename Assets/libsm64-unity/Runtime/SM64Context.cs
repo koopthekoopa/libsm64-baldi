@@ -158,5 +158,21 @@ namespace LibSM64
             if( s_instance != null && s_instance._surfaceObjects.Contains( surfaceObject ))
                 s_instance._surfaceObjects.Remove( surfaceObject );
         }
+		
+		static public void StopMusic()
+		{
+			if (Interop.isGlobalInit /*its also audio init flag*/)
+			{
+				Interop.StopMusic();
+			}
+		}
+		
+		static public void PlayMusic(SM64SeqId seqId)
+		{
+			if (Interop.isGlobalInit /*its also audio init flag*/)
+			{
+				Interop.PlayMusic(seqId);
+			}
+		}
     }
 }

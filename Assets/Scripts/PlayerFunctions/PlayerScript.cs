@@ -152,12 +152,14 @@ public class PlayerScript : SM64InputProvider
             marioObj.MovePosition(new Vector3(moveDirection.x, moveDirection.y, moveDirection.z));
             SM64ResetSpeed();
             SM64SetAction(SM64ActionType.ACT_GRABBED);
+			DeactivateJumpRope();
         }
         else if (hugging && (!bootsActive || SM64HasMetalCap()))
         {
             moveDirection = (firstPrize.velocity * 1.75f * Time.deltaTime + (new Vector3(firstPrizeTransform.position.x, height, firstPrizeTransform.position.z) + new Vector3((float)Mathf.RoundToInt(firstPrizeTransform.forward.x), 0f, (float)Mathf.RoundToInt(firstPrizeTransform.forward.z)) * 3f - base.transform.position)) * (float)principalBugFixer;
             marioObj.MovePosition(new Vector3(moveDirection.x, moveDirection.y, moveDirection.z));
             SM64SetAction(SM64ActionType.ACT_GRABBED);
+			DeactivateJumpRope();
         }
         
         if (!hugging && !sweeping)
@@ -206,6 +208,7 @@ public class PlayerScript : SM64InputProvider
 	{
 		while (gameOver)
 		{
+			SM64Context.StopMusic();
 			hud.enabled = false;
 			jumpRopeScreen.SetActive(false);
 			yield return new WaitForEndOfFrame();

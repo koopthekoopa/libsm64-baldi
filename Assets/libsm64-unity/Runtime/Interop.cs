@@ -181,6 +181,14 @@ namespace LibSM64
         static extern void sm64_audio_init( IntPtr rom );
         [DllImport("sm64")]
         static extern uint sm64_audio_tick( uint numQueuedSamples, uint numDesiredSamples, IntPtr audio_buffer );
+		
+		/* MUSIC */
+        [DllImport("sm64")]
+		static extern void sm64_play_music(byte player, ushort seqArgs, ushort fadeTimer);
+        [DllImport("sm64")]
+		static extern void sm64_stop_background_music(ushort seqId);
+        [DllImport("sm64")]
+		static extern ushort sm64_get_current_background_music();
 
         /* MR RETRO HIMSELF */
 
@@ -333,6 +341,31 @@ namespace LibSM64
 
             return result;
         }
+		
+		static bool playingMus = false;
+		
+		public static void StopMusic()
+		{
+			if (playingMus)
+			{
+				lock (_lock)
+				{
+					sm64_stop_background_music(sm64_get_current_background_music());
+				}
+				playingMus = false;
+			}
+		}
+		
+		public static void PlayMusic(SM64SeqId seqId)
+		{
+			if (playingMus) StopMusic();
+			lock (_lock)
+			{
+				sm64_stop_background_music(sm64_get_current_background_music());
+				sm64_play_music((byte)SM64SeqPlayer.SEQ_SOUND_PLAYER, (ushort)seqId, 0);
+			}
+			playingMus = true;
+		}
 
         public static void SurfaceObjectMove( uint id, Vector3 position, Quaternion rotation )
         {
