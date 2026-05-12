@@ -255,6 +255,8 @@ public class MathGameScript : MonoBehaviour
             /*StartCoroutine(CheatText("THIS IS WHERE IT ALL BEGAN"));
             SceneManager.LoadSceneAsync("TestRoom");*/
             StartCoroutine(CheatText("ENJOY THE TEST ROOM 64"));
+			gc.DeactivateLearningGame(gameObject);
+			Time.timeScale = 1f;
             SceneManager.LoadSceneAsync(6);
         }
         /*else if (playerAnswer.text == "53045009")
