@@ -29,6 +29,7 @@ public class SweepScript : MonoBehaviour
 			Wander(); // Start wandering
 			audioDevice.PlayOneShot(aud_Intro); // "Looks like its sweeping time!"
 		}
+                if (GameObject.Find("SweepSM64Block")) GameObject.Find("SweepSM64Block").SetActive(!active);
 	}
 	private void FixedUpdate()
 	{

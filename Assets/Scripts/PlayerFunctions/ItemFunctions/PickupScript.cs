@@ -8,7 +8,7 @@ public class PickupScript : MonoBehaviour
     
 	private void Update()
 	{
-        bool metalCapAvailable = false;
+        /*bool metalCapAvailable = false;
         if (gameObject.name == "Pickup_MetalCap")
         {
             if (gc.notebooks >= 3 && gc.notebooks < 7)
@@ -16,7 +16,7 @@ public class PickupScript : MonoBehaviour
                 metalCapAvailable = true;
             }
             spriteForMetalCap.SetActive(metalCapAvailable);
-        }
+        }*/
 
 		if (/*Singleton<InputManager>.Instance.GetActionKeyDown(InputAction.Interact) &&*/ Time.timeScale != 0f)
 		{
@@ -81,7 +81,7 @@ public class PickupScript : MonoBehaviour
 					transform.gameObject.SetActive(false);
 					gc.CollectItem(11);
 				}
-				else if (gameObject.name == "Pickup_MetalCap"/* & Vector3.Distance(player.position, transform.position) < 10f*/ && metalCapAvailable)
+				else if (gameObject.name == "Pickup_MetalCap"/* & Vector3.Distance(player.position, transform.position) < 10f && metalCapAvailable*/)
 				{
 					transform.gameObject.SetActive(false);
 					gc.MetalCap();

@@ -6,8 +6,8 @@ public class BullyScript : MonoBehaviour
 	private void Start()
 	{
 		audioDevice = GetComponent<AudioSource>(); //Get the Audio Source
-		//waitTime = Random.Range(60f, 120f); //Set the amount of time before the bully appears again
-		waitTime = Random.Range(1f, 2f); //Set the amount of time before the bully appears again
+		waitTime = Random.Range(60f, 120f); //Set the amount of time before the bully appears again
+		//waitTime = Random.Range(1f, 2f); //Set the amount of time before the bully appears again
 	}
 	private void Update()
 	{

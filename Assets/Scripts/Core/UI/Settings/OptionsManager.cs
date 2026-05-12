@@ -33,24 +33,12 @@ public class OptionsManager : MonoBehaviour
 	private void Update()
 	{
 		PlayerPrefs.SetFloat("MouseSensitivity", slider.value);
-		if (rumble.isOn)
-		{
-			PlayerPrefs.SetInt("Rumble", 1);
-		}
-		else
-		{
-			PlayerPrefs.SetInt("Rumble", 0);
-		}
-		if (analog.isOn)
-		{
-			PlayerPrefs.SetInt("AnalogMove", 1);
-		}
-		else
-		{
-			PlayerPrefs.SetInt("AnalogMove", 0);
-		}
+		PlayerPrefs.SetInt("Rumble", rumble.isOn ? 1 : 0);
+		PlayerPrefs.SetInt("AnalogMove", analog.isOn ? 1 : 0);
+		PlayerPrefs.SetInt("SM64Music", sm64music.isOn ? 1 : 0);
 	}
 	public Slider slider;
 	public Toggle rumble;
 	public Toggle analog;
+	public Toggle sm64music;
 }
