@@ -18572,7 +18572,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Big thanks hanks to the people that worked on libsm64 and the SM64 decomp!
+  m_text: Big thanks to the people that worked on libsm64 and the SM64 decomp!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21749360ea10093439a1f9266c91c718, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 9ea8bb120e8a8ba4aa942913babb2161, type: 2}
