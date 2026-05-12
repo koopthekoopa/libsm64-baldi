@@ -10,7 +10,7 @@ public class SweepScript : MonoBehaviour
 		agent = GetComponent<NavMeshAgent>();
 		audioDevice = GetComponent<AudioSource>();
 		origin = transform.position;
-		waitTime = Random.Range(waitMin, waitMin);
+		waitTime = Random.Range(waitMin, waitMax);
 	}
 	private void Update()
 	{

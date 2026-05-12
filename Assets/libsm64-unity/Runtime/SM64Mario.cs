@@ -198,6 +198,11 @@ namespace LibSM64
             return states[buffIndex].isAttacking;
         }
 
+        public bool IsAir()
+        {
+            return states[buffIndex].isAir;
+        }
+
         public void MovePosition( Vector3 position )
         {
             Interop.SetMarioPosition(marioId, transform.position + position /*idk*/);

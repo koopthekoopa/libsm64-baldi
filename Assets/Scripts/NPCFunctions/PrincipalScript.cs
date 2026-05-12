@@ -125,9 +125,7 @@ public class PrincipalScript : MonoBehaviour
 			inOffice = true;
 			playerScript.principalBugFixer = 0;
 			agent.Warp(principalDetentionPoint.position); //Teleport the principal to Principal_DetentionPoint
-            this.playerScript.hugging = false;
-            this.playerScript.sweeping = false;
-            this.playerScript.jumpRope = false;
+            this.playerScript.CancelAllDistractions();
             this.playerScript.SM64Teleport(principalDetentionPoint.position);
 			agent.isStopped = true; //Stop the principal from moving
 			other.transform.position = new Vector3(playerDetentionPoint.position.x, 4f, playerDetentionPoint.position.z); // Teleport the player to Player_DetentionPoint

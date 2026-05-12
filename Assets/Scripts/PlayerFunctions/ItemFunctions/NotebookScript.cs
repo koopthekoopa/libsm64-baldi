@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using LibSM64;
 
 public class NotebookScript : MonoBehaviour
 {
@@ -51,7 +52,9 @@ public class NotebookScript : MonoBehaviour
     {
         if (other.transform.name == "Player")
         {
-            other.gameObject.GetComponent<PlayerScript>().SM64ResetSpeed();
+            other.gameObject.GetComponent<PlayerScript>().SM64SetAction(SM64ActionType.ACT_IDLE);
+            other.gameObject.GetComponent<PlayerScript>().marioObj.SetAction(SM64ActionType.ACT_IDLE);
+            other.gameObject.GetComponent<PlayerScript>().SM64Teleport(transform.position);
             touched = true;
         }
     }

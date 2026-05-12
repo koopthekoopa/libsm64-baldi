@@ -30,6 +30,33 @@ namespace LibSM64
         HardNotSlippery  = 0x0037,// Hard and Non-slippery (Always has fall damage)
         VerticalWind     = 0x0038,// Death at bottom with vertical wind
     }
+	
+	public enum SM64ActionFlag : uint
+    {
+		// flags
+		ACT_FLAG_STATIONARY                 = 0x00000200,
+		ACT_FLAG_MOVING                     = 0x00000400,
+		ACT_FLAG_AIR                        = 0x00000800,
+		ACT_FLAG_INTANGIBLE                 = 0x00001000,
+		ACT_FLAG_SWIMMING                   = 0x00002000,
+		ACT_FLAG_METAL_WATER                = 0x00004000,
+		ACT_FLAG_SHORT_HITBOX               = 0x00008000,
+		ACT_FLAG_RIDING_SHELL               = 0x00010000,
+		ACT_FLAG_INVULNERABLE               = 0x00020000,
+		ACT_FLAG_BUTT_OR_STOMACH_SLIDE      = 0x00040000,
+		ACT_FLAG_DIVING                     = 0x00080000,
+		ACT_FLAG_ON_POLE                    = 0x00100000,
+		ACT_FLAG_HANGING                    = 0x00200000,
+		ACT_FLAG_IDLE                       = 0x00400000,
+		ACT_FLAG_ATTACKING                  = 0x00800000,
+		ACT_FLAG_ALLOW_VERTICAL_WIND_ACTION = 0x01000000,
+		ACT_FLAG_CONTROL_JUMP_HEIGHT        = 0x02000000,
+		ACT_FLAG_ALLOW_FIRST_PERSON         = 0x04000000,
+		ACT_FLAG_PAUSE_EXIT                 = 0x08000000,
+		ACT_FLAG_SWIMMING_OR_FLYING         = 0x10000000,
+		ACT_FLAG_WATER_OR_TEXT              = 0x20000000,
+		ACT_FLAG_THROWING                   = 0x80000000,
+	}
 
     public enum SM64ActionType : uint
     {
@@ -288,9 +315,9 @@ namespace LibSM64
         Wing   = 0x0008,
     }
 
-    public enum SM64ActionFlagType
+    /*public enum SM64ActionFlagType
     {
         Attacking = 0x00800000,
         LongJump = 0x03000888,
-    }
+    }*/
 }

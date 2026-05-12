@@ -41,11 +41,12 @@ public class PlayerScript : SM64InputProvider
 		{
 			DeactivateJumpRope();
 		}*/
-        if (jumpRope && SM64HasMetalCap())
+		// glitchy so ehhh
+        /*if (jumpRope && SM64HasMetalCap())
 		{
 			DeactivateJumpRope();
             playtime.Disappoint();
-		}
+		}*/
         if (jumpRope && (Input.GetKey(KeyCode.K) && gc.debugMode))
 		{
 			DeactivateJumpRope();
@@ -379,6 +380,14 @@ public class PlayerScript : SM64InputProvider
             marioObj.SetAction(lastSet);
         }
     }
+	
+	public void CancelAllDistractions()
+	{
+		sweeping = false;
+		jumpRope = false;
+		hugging = false;
+		DeactivateJumpRope();
+	}
     
     [SerializeField] GameObject cameraObject;
     
@@ -431,12 +440,15 @@ public class PlayerScript : SM64InputProvider
  
     public override Vector2 GetJoystickAxes()
     {
+		// make them not move but still make them able to turn.
+		// does a funny tip toe animation too :)
+		float multip = 1f;
         if (jumpRope || (hugging || (sweeping && gottaSweep.gameObject.GetComponent<SweepScript>().active) && (!bootsActive || SM64HasMetalCap())))
         {
-            return Vector2.zero;
+            multip = 0.035f;
         }
-        return new Vector2(CalcHorizontalAxis() * DumbLimitFix(),
-                           CalcVerticalAxis() * DumbLimitFix());
+        return new Vector2((CalcHorizontalAxis() * DumbLimitFix()) * multip,
+                           (CalcVerticalAxis()   * DumbLimitFix()) * multip);
     }
 
     public override bool GetButtonHeld(Button button)

@@ -76,15 +76,24 @@ namespace LibSM64
             {
                 get { return (flags & (uint)SM64CapType.Metal) != 0; }
             }
+			
+			// action flags
             
             public bool isAttacking
             {
-                get { return (action & (uint)SM64ActionFlagType.Attacking) != 0; }
+                get { return (action & (uint)SM64ActionFlag.ACT_FLAG_ATTACKING) != 0; }
             }
+            
+            public bool isAir
+            {
+                get { return (action & (uint)SM64ActionFlag.ACT_FLAG_AIR) != 0; }
+            }
+			
+			// action types
             
             public bool isLongJumping
             {
-                get { return (action == (uint)SM64ActionFlagType.LongJump); }
+                get { return action == (uint)SM64ActionType.ACT_LONG_JUMP; }
             }
         };
 

@@ -40,7 +40,7 @@ public class JumpRopeScript : MonoBehaviour
 	{
 		ropeHit = true; //Set ropehit to true
 		//if (cs.jumpHeight <= 0.2f)
-        if (!this.ps.collidedRopeTrigger)
+        if (!this.ps.collidedRopeTrigger && !this.ps.marioObj.IsAir())
 		{
 			Fail(); //Fail
 		}
